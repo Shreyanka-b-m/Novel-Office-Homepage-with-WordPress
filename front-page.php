@@ -1,9 +1,46 @@
 <?php get_header(); ?>
+  <!-- Trusted Companies -->
+  <section class="trusted-companies">
+        <div class="trusted-container">
+            <div class="trusted-text">
+                <h2>Trusted by<br>Leading Companies</h2>
+            </div>
+            <div class="trusted-description">
+                <p>We are proud to be the trusted partner of businesses across industries. Join the many clients who
+                    rely on
+                    us for a productive and inspiring workspace.</p>
+            </div>
+        </div>
 
-<main>
-  <section class="hero">Custom theme for Novel Office!</section>
-  
-</main>
+        <!-- Logos Grid -->
+        <div class="logos-grid">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/images/stellapps.jpg" alt="Stellapps">
+
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/JoulesToWatts.jpg"
+                alt="Joules to Watts">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Flatworld.jpg"
+                alt="Flatworld">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Hitachi.jpg"
+                alt="Hitachi">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Indiamart.jpg"
+                alt="IndiaMart">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Nasscom.jpg"
+                alt="Nasscom">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Unacademy.jpg"
+                alt="Unacademy">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Olx.jpg"
+                alt="OLX Autos">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/CarDekho.jpg"
+                alt="CarDekho">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Qatar.jpg"
+                alt="Qatar Airways">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Air-Asia.jpg"
+                alt="AirAsia">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Pepe-Jeans.jpg"
+                alt="Pepe Jeans">
+        </div>
+    </section>
+
 
 <?php get_footer(); ?>
 

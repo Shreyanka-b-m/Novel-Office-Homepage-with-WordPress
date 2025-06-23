@@ -1,36 +1,9 @@
 <?php
-function mytheme_enqueue_assets() {
-    wp_enqueue_style('novel-google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap', false);
-    wp_enqueue_style('nunito-sans', 'https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap', false);
-
-
+function custom_theme_assets() {
     wp_enqueue_style('main-style', get_stylesheet_uri());
-    wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', [], false, true);
+    wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', [], null, true);
+    wp_enqueue_script('scrolltrigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', ['gsap'], null, true);
+    wp_enqueue_script('custom-js', get_template_directory_uri() . '/assets/js/main.js', ['scrolltrigger'], null, true);
 }
-add_action('wp_enqueue_scripts', 'mytheme_enqueue_assets');
+add_action('wp_enqueue_scripts', 'custom_theme_assets');
 
-function create_testimonial_post_type() {
-  register_post_type('testimonial',
-    array(
-      'labels' => array(
-        'name' => __('Testimonials'),
-        'singular_name' => __('Testimonial')
-      ),
-      'public' => true,
-      'has_archive' => true,
-      'supports' => array('title', 'editor', 'thumbnail'),
-      'rewrite' => array('slug' => 'testimonials'),
-    )
-  );
-}
-add_action('init', 'create_testimonial_post_type');
-
-// Enable theme support for menus
-add_theme_support('menus');
-
-function novel_register_menus() {
-    register_nav_menus([
-        'primary' => __('Primary Menu', 'novel'),
-    ]);
-}
-add_action('init', 'novel_register_menus');

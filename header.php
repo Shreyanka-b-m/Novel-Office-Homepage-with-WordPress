@@ -7,26 +7,21 @@
 </head>
 <body <?php body_class(); ?>>
 
-<div class="header-hero-wrapper">
+<!-- <div class="header-hero-wrapper">
   <header class="site-header">
     <div class="navbar-container">
       <div class="logo">
         <img class="site-logo" 
-     src="<?php echo get_template_directory_uri(); ?>/assets/images/Novel Logo White.png" 
-     data-default="<?php echo get_template_directory_uri(); ?>/assets/images/Novel Logo White.png" 
-     data-scrolled="<?php echo get_template_directory_uri(); ?>/assets/images/Novel Logo Color.png" 
+     src="/assets/images/Novel Logo White.png" 
+     data-default="/assets/images/Novel Logo White.png" 
+     data-scrolled="/assets/images/Novel Logo Color.png" 
      alt="Novel Office Logo">
 
       </div>
 
       <div class="mobile-nav-wrapper">
         <nav class="main-nav">
-          <?php
-            wp_nav_menu([
-              'theme_location' => 'primary',
-              'menu_class' => 'nav-menu',
-            ]);
-          ?>
+          
         </nav>
       </div>
 
@@ -50,6 +45,22 @@
                 <div class="vertical-line"></div>
                 <div class="scroll">Scroll to know more</div>
             </div>
+
+    <section class="card-animation-section">
+  <div class="hero-shrink-container">
+    <div class="mini-hero-image"></div>
+    <div class="fly-in-cards">
+      <div class="card card1">Card 1</div>
+      <div class="card card2">Card 2</div>
+      <div class="card card3">Card 3</div>
+      <div class="card card4">Card 4</div>
+    </div>
+  </div>
+</section>
   </section>
   
-</div>
+</div> -->
+
+<nav id="navbar">
+  <strong>LOGO</strong>
+</nav>

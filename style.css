@@ -5,9 +5,107 @@ Description: Custom WordPress theme for Novel Office assignment
 Version: 1.0
 */
 
+/* 
+
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
+}
+
+.animated-cards {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 0;
+    pointer-events: none;
+}
+
+.card {
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    background: white;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+.card1 {
+    transform: translate(-300px, -500px) scale(0.5);
+}
+
+.card2 {
+    transform: translate(300px, -500px) scale(0.5);
+}
+
+.card3 {
+    transform: translate(-300px, -700px) scale(0.5);
+}
+
+.card4 {
+    transform: translate(300px, -700px) scale(0.5);
+}
+
+.card-animation-section {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+}
+
+.hero-shrink-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 5;
+    transition: all 0.6s ease;
+}
+
+.mini-hero-image {
+    width: 100%;
+    height: 60vh;
+    background: url('./assets/images/Frame 6.jpg') no-repeat center center;
+    background-size: cover;
+    transition: all 0.8s ease;
+}
+
+.fly-in-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    transition: all 0.8s ease;
+    opacity: 0;
+    transform: translateY(-100px);
+}
+
+.fly-in-cards .card {
+    width: 200px;
+    height: 280px;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+.card-animation-section.active .fly-in-cards {
+    top: 60%;
+    transform: translateY(-50%);
+    opacity: 1;
+}
+
+.card-animation-section.active .mini-hero-image {
+    height: 40vh;
 }
 
 .site-header {
@@ -105,7 +203,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Animation to cross when nav is open */
 body.nav-open .hamburger span:nth-child(1) {
     transform: rotate(40deg) translate(7px, 9px);
 }
@@ -204,7 +301,6 @@ body.nav-open .hamburger span:nth-child(3) {
 .hero-title {
     letter-spacing: 10px;
     line-height: 1.6;
-    /* letter-spacing: 10px; */
     font-size: 4rem;
     font-weight: 530;
     position: relative;
@@ -642,4 +738,238 @@ body.nav-open .hamburger span:nth-child(3) {
             background-color: #f9f9f9;
             text-align: center;
         }
+} */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible; /* ✅ super important */
+}
+
+
+.section.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 5;
+    background: transparent;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+/* Hero Image Full */
+.hero-image-wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: visible; */
+    /* ✅ allow children to escape */
+}
+
+.hero-image {
+    width: 100vw;
+    height: 100vh;
+    background: url('./assets/images/Frame\ 6.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 64px;
+    color: white;
+    z-index: 3;
+}
+
+.card-container {
+    position: absolute;
+    top: 50%;
+    /* ensure vertical center */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-200px);
+    opacity: 0;
+    background: #fff;
+        border: 2px solid red;
+        /* for debug visibility */
+    position: relative;
+        /* should already be this */
+        will-change: transform;
+}
+
+/* Section 2 Trusted Logos Layout */
+#section-2 {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    position: relative;
+    background: #f7f7f7;
+        border: 2px dashed red;
+}
+
+.trusted-section-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    margin-top: 40px;
+    z-index: 2;
+    position: relative;
+}
+
+.trusted-left h2 {
+    font-size: 36px;
+    color: #1b4b5a;
+    margin-bottom: 10px;
+}
+
+.trusted-right p {
+    max-width: 500px;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 0;
+}
+
+.trusted-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.trusted-logos img {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Transition hero image clone */
+/* .hero-transfer-image {
+    position: absolute;
+    top: 0;
+    width: 400px;
+    height: 300px;
+    background: url('./assets/images/Frame\ 6.jpg') center/cover no-repeat;
+    border-radius: 20px;
+    opacity: 0;
+    z-index: 1;
+} */
+
+#section-3 {
+    background: #f8f8f8;
+    display: block;
+    opacity: 0;
+}
+
+.chat-bubble {
+    position: absolute;
+    background: #9dd6db;
+    padding: 12px 20px;
+    border-radius: 12px;
+    max-width: 200px;
+    font-size: 14px;
+}
+
+.bubble1 {
+    top: 60px;
+    left: 60px;
+}
+
+.bubble2 {
+    top: 100px;
+    right: 60px;
+}
+
+.bubble3 {
+    top: 160px;
+    left: 160px;
+}
+
+.bubble4 {
+    top: 220px;
+    right: 120px;
+}
+
+.chat-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent #9dd6db transparent;
+}
+
+.headline {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    color: #111;
+    /* opacity: 0; */
+    transition: none;
 }

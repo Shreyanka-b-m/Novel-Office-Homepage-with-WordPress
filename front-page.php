@@ -41,6 +41,72 @@
         </div>
     </section>
 
+    <section class="inquiry-section">
+        <!-- Chat Bubbles -->
+        <div class="chat-bubbles">
+            <div class="bubble bubble-1">Coworking spaces available in Novel Office?</div>
+            <div class="bubble bubble-2">Best office space with 24X7 service?</div>
+            <div class="bubble bubble-3">What is the best office space in Bangalore ?</div>
+            <div class="bubble bubble-4">Where is the best coworking space in Bangalore?</div>
+        </div>
+
+        <div class="inquiry-heading">
+            <h2>Want to know<br>where the Best<br>Office Spaces are?</h2>
+        </div>
+    </section>
+
+    <section class="rental-offices">
+  <div class="rental-container">
+    <h2 class="rental-heading">Best Rental office Space in Bangalore</h2>
+    <p class="rental-description">
+      We provide value-for-money services with top-notch amenities, 24/7 IT support and security service along with options from fully furnished to co-working and managed offices on rent in various prime locations in Bangalore.
+    </p>
+    <div class="rental-buttons">
+      <a href="#" class="btn-primary">Explore Locations</a>
+      <a href="#" class="btn-secondary">Explore Gallery</a>
+    </div>
+
+    <div class="office-cards">
+      <div class="office-card">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Frame 7.jpg" alt="Novel Office Queens">
+        <div class="office-label">
+          <h3>NOVEL OFFICE QUEENS</h3>
+          <p>Queens Road, Bangalore</p>
+        </div>
+      </div>
+      <div class="office-card">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Frame 1.jpg" alt="Novel Office Central">
+        <div class="office-label">
+          <h3>NOVEL OFFICE CENTRAL</h3>
+          <p>MG Road, Bangalore</p>
+        </div>
+      </div>
+      <div class="office-card">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Novel Business Park.jpg" alt="Novel MSR Tech Park">
+        <div class="office-label">
+          <h3>NOVEL MSR TECH PARK</h3>
+          <p>Marathahalli, Bangalore</p>
+        </div>
+      </div>
+      <div class="office-card">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Frame 3.jpg" alt="Novel Brigade Tech Park">
+        <div class="office-label">
+          <h3>NOVEL BRIGADE TECH PARK</h3>
+          <p>Whitefield, Bangalore</p>
+        </div>
+      </div>
+      <div class="office-card">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Frame 5.jpg" alt="Novel Office Workhub">
+        <div class="office-label">
+          <h3>NOVEL OFFICE WORKHUB</h3>
+          <p>Whitefield, Bangalore</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
 <?php get_footer(); ?>
 

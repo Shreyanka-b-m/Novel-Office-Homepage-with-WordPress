@@ -1,14 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector(".site-header");
-  const hero = document.querySelector(".hero");
-  const heroHeight = hero.offsetHeight;
+  const logo = document.querySelector(".site-logo");
 
   window.addEventListener("scroll", function () {
-    if (window.scrollY > heroHeight * 0.2) {
-      // Adjust this value as needed
+    if (window.scrollY > 50) {
       header.classList.add("scrolled");
+      if (logo) {
+        logo.src = logo.getAttribute("data-scrolled");
+      }
     } else {
       header.classList.remove("scrolled");
+      if (logo) {
+        logo.src = logo.getAttribute("data-default");
+      }
     }
   });
 });

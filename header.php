@@ -11,7 +11,12 @@
   <header class="site-header">
     <div class="navbar-container">
       <div class="logo">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Novel Logo.png" alt="Novel Office Logo">
+        <img class="site-logo" 
+     src="<?php echo get_template_directory_uri(); ?>/assets/images/Novel Logo White.png" 
+     data-default="<?php echo get_template_directory_uri(); ?>/assets/images/Novel Logo White.png" 
+     data-scrolled="<?php echo get_template_directory_uri(); ?>/assets/images/Novel Logo Color.png" 
+     alt="Novel Office Logo">
+
       </div>
 
       <div class="mobile-nav-wrapper">

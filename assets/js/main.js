@@ -1,34 +1,60 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//   const header = document.querySelector(".site-header");
-//   const logo = document.querySelector(".site-logo");
-
-//   window.addEventListener("scroll", function () {
-//     if (window.scrollY > 50) {
-//       header.classList.add("scrolled");
-//       if (logo) {
-//         logo.src = logo.getAttribute("data-scrolled");
-//       }
-//     } else {
-//       header.classList.remove("scrolled");
-//       if (logo) {
-//         logo.src = logo.getAttribute("data-default");
-//       }
-//     }
-//   });
-// });
-
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
-
-  const sections = document.querySelectorAll(".section");
+  let isInHeroExpandedState = true;
   let currentIndex = 0;
   let isScrolling = false;
   let animationPlayed = false;
 
-  gsap.set(sections[0], { autoAlpha: 1 });
-  sections[0].classList.add("active");
+  const navbar = document.getElementById("navbar");
+  const navLogo = document.getElementById("nav-logo");
+  const overlay = document.getElementById("hero-overlay");
+
+  gsap.set(".section", { autoAlpha: 0 });
+  gsap.set("#section-1", { autoAlpha: 1 });
+
+  const updateNavbarStyle = () => {
+    if (isInHeroExpandedState) {
+      navbar.classList.remove("scrolled");
+      navLogo.src = `${THEME_ASSETS_URI}/Novel Logo White.png`;
+      overlay.style.opacity = "1";
+    } else {
+      navbar.classList.add("scrolled");
+      navLogo.src = `${THEME_ASSETS_URI}/Novel Logo Color.png`;
+      overlay.style.opacity = "0";
+    }
+  };
+
+  const animateCardsIn = () => {
+    return gsap.fromTo(
+      ".card",
+      {
+        y: -100,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: { each: 0.2, from: "random" },
+        duration: 0.6,
+        ease: "power2.out",
+      }
+    );
+  };
+
+  const animateCardsOut = () => {
+    return gsap.to(".card", {
+      y: -80,
+      opacity: 0,
+      stagger: { each: 0.1, from: "end" },
+      duration: 0.4,
+      ease: "power2.in",
+    });
+  };
 
   const shrinkHero = () => {
+    isInHeroExpandedState = false;
+    updateNavbarStyle();
+
     const tl = gsap.timeline({
       onComplete: () => {
         isScrolling = false;
@@ -38,29 +64,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     tl.to("#hero-image", {
-      width: "400px",
-      height: "300px",
+      width: "30vw",
+      height: "70vh",
       borderRadius: "20px",
-      duration: 0.6,
+      marginTop: "7vh",
+      duration: 0.8,
       ease: "power2.inOut",
     });
 
-    tl.to("#cards", { opacity: 1, duration: 0.4 }, "<0.2");
-
-    // Reset cards before animation
-    gsap.set(".card", { x: 0, y: -200, rotation: 0, opacity: 0 });
-
-    tl.to(
-      ".card",
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.1,
-        duration: 0.5,
-        ease: "back.out(1.7)",
-      },
-      "<0.1"
-    );
+    tl.to("#cards", { opacity: 1, duration: 0.3 }, "<0.2");
+    // resetCardTransforms();
+    tl.add(animateCardsIn(), "<0.1");
   };
 
   const expandHero = () => {
@@ -69,38 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
         isScrolling = false;
         animationPlayed = false;
         currentIndex = 0;
+        isInHeroExpandedState = true;
+        updateNavbarStyle();
       },
     });
 
-    const cardsContainer = document.querySelector("#cards");
-    const isVisible = window.getComputedStyle(cardsContainer).opacity !== "0";
+    tl.add(animateCardsOut(), 0);
 
-    // Only fly out cards if visible
-    if (isVisible) {
-      const cards = document.querySelectorAll(".card");
-      cards.forEach((card, index) => {
-        const direction = index < 2 ? -1 : 1;
-        tl.to(
-          card,
-          {
-            x: direction * 300,
-            y: -200,
-            rotation: direction * 20,
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.in",
-          },
-          "<+=0.05"
-        );
-      });
+    tl.to("#cards", { opacity: 0, duration: 0.3 }, "<");
 
-      tl.to("#cards", { opacity: 0, duration: 0.3 }, "<");
-    }
-
-    // Clear transforms before expanding hero
-    tl.set(".card", { clearProps: "all" });
-
-    // Expand hero
     tl.to(
       "#hero-image",
       {
@@ -112,8 +103,32 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 0.6,
         ease: "power2.inOut",
       },
-      "<"
+      "<+0.1"
     );
+
+    tl.set(".card", { clearProps: "all" });
+  };
+
+  const goToCardState = () => {
+    const tl = gsap.timeline({
+      onComplete: () => {
+        currentIndex = 1;
+        isScrolling = false;
+      },
+    });
+
+    tl.to(".trusted-section-content", { opacity: 0, duration: 0.1 });
+
+    tl.set("#section-2", { autoAlpha: 0 });
+    tl.set("#section-1", { autoAlpha: 1 });
+
+    tl.to("#section-1", { y: "0vh", duration: 0.1 });
+    tl.to("#hero-image", { scale: 1, y: "0vh", duration: 1 }, "<");
+
+    resetCardTransforms();
+    tl.set("#cards", { opacity: 1 });
+    tl.add(animateCardsIn(), "<");
+    updateNavbarStyle();
   };
 
   const scrollToSection2WithScrollEffect = () => {
@@ -127,12 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     tl.to("#section-1", { y: "-100vh", duration: 1, ease: "power2.inOut" }, 0);
-    tl.to(
-      "#hero-image",
-      { scale: 1.2, y: "-50vh", duration: 1, ease: "power2.inOut" },
-      0
-    );
-
+    tl.to("#hero-image", { scale: 1.2, y: "-50vh", duration: 1 }, 0);
     tl.set("#section-1", { autoAlpha: 0 });
     tl.set("#section-2", { autoAlpha: 1 });
 
@@ -142,53 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
       { opacity: 1, y: 0, duration: 0.6, delay: 0.2 },
       "<"
     );
-  };
 
-  const goToCardState = () => {
-    const tl = gsap.timeline({
-      onComplete: () => {
-        currentIndex = 1;
-        isScrolling = false;
-      },
-    });
-
-    tl.to(".trusted-section-content", { opacity: 0, duration: 0.3 });
-
-    tl.set("#section-2", { autoAlpha: 0 });
-    tl.set("#section-1", { autoAlpha: 1 });
-
-    tl.to("#section-1", {
-      y: "0vh",
-      duration: 1,
-      ease: "power2.inOut",
-    });
-
-    tl.to(
-      "#hero-image",
-      {
-        scale: 1,
-        y: "0vh",
-        duration: 1,
-        ease: "power2.inOut",
-      },
-      "<"
-    );
-
-    gsap.set(".card", { x: 0, y: -200, rotation: 0, opacity: 0 });
-
-    tl.to("#cards", { opacity: 1, duration: 0.3 }, "-=0.6");
-
-    tl.to(
-      ".card",
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.1,
-        duration: 0.5,
-        ease: "back.out(1.7)",
-      },
-      "<"
-    );
+    updateNavbarStyle();
   };
 
   const scrollToSection3 = () => {
@@ -202,14 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     tl.to("#section-2", { autoAlpha: 0, duration: 0.4 });
-
     tl.set("#section-3", { autoAlpha: 1 });
 
-    tl.fromTo(
-      "#section-3",
-      { opacity: 0 },
-      { opacity: 1, duration: 0.5, ease: "power2.inOut" }
-    );
+    tl.fromTo("#section-3", { opacity: 0 }, { opacity: 1, duration: 0.3 });
 
     tl.from(
       ".chat-bubble",
@@ -228,11 +188,13 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         y: -60,
         opacity: 0,
-        duration: 0.7,
+        duration: 0.5,
         ease: "power2.out",
       },
       "-=0.5"
     );
+
+    updateNavbarStyle();
   };
 
   const scrollUpFromSection3 = () => {
@@ -265,20 +227,17 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     tl.to("#section-3", { autoAlpha: 0, duration: 0.3 });
-
     tl.set("#section-2", { autoAlpha: 1 });
 
-    tl.fromTo(
-      "#section-2",
-      { opacity: 0 },
-      { opacity: 1, duration: 0.5, ease: "power2.out" }
-    );
+    tl.fromTo("#section-2", { opacity: 0 }, { opacity: 1, duration: 0.5 });
 
     tl.set(".chat-bubble", { clearProps: "all" });
     tl.set(".headline", { clearProps: "all" });
+
+    updateNavbarStyle();
   };
 
-  // Main wheel handler
+  // Scroll Handler
   window.addEventListener("wheel", (e) => {
     if (isScrolling) return;
 
@@ -291,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (currentIndex === 2) {
         scrollToSection3();
       }
-    } else if (e.deltaY < 0) {
+    } else {
       if (currentIndex === 3) {
         scrollUpFromSection3();
       } else if (currentIndex === 2) {
@@ -301,4 +260,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  // Mobile Nav Toggle
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("open");
+    mobileMenu.style.display =
+      mobileMenu.style.display === "flex" ? "none" : "flex";
+  });
+
+  updateNavbarStyle();
 });

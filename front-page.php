@@ -1,4 +1,5 @@
 
+
 <?php get_header(); ?>
 
 
@@ -118,6 +119,24 @@
     <div class="chat-bubble bubble4">Where is the best coworking space in Bangalore?</div>
     <h1 class="headline">Want to know <br> where the Best <br> Office Spaces are?</h1>
   </section>
+
+  <div class="stacked-cards-wrapper" id="stacked-cards">
+    <div class="overlay-card card-a">Card 1 Content</div>
+    <div class="overlay-card card-b">Card 2 Content</div>
+    <div class="overlay-card card-c">Card 3 Content</div>
+    <div class="overlay-card card-d">Card 4 Content</div>
+    <div class="overlay-card card-e">Card 5 Content</div>
+  </div>
+
+<div class="final-content" id="final-content">
+  <h2>Your Final Heading</h2>
+  <p>This is your final description text.</p>
+  <div class="button-group">
+    <button>Button 1</button>
+    <button>Button 2</button>
+  </div>
+</div>
+
 
 </div>
 

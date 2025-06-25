@@ -1,143 +1,5 @@
-
-  <!-- <section class="trusted-companies">
-        <div class="trusted-container">
-            <div class="trusted-text">
-                <h2>Trusted by<br>Leading Companies</h2>
-            </div>
-            <div class="trusted-description">
-                <p>We are proud to be the trusted partner of businesses across industries. Join the many clients who
-                    rely on
-                    us for a productive and inspiring workspace.</p>
-            </div>
-        </div>
-
-        <div class="logos-grid">
-                  <img src="/assets/images/stellapps.jpg" alt="Stellapps">
-
-            <img src="/assets/images/JoulesToWatts.jpg"
-                alt="Joules to Watts">
-            <img src="/assets/images/Flatworld.jpg"
-                alt="Flatworld">
-            <img src="/assets/images/Hitachi.jpg"
-                alt="Hitachi">
-            <img src="/assets/images/Indiamart.jpg"
-                alt="IndiaMart">
-            <img src="/assets/images/Nasscom.jpg"
-                alt="Nasscom">
-            <img src="/assets/images/Unacademy.jpg"
-                alt="Unacademy">
-            <img src="/assets/images/Olx.jpg"
-                alt="OLX Autos">
-            <img src="/assets/images/CarDekho.jpg"
-                alt="CarDekho">
-            <img src="/assets/images/Qatar.jpg"
-                alt="Qatar Airways">
-            <img src="/assets/images/Air-Asia.jpg"
-                alt="AirAsia">
-            <img src="/assets/images/Pepe-Jeans.jpg"
-                alt="Pepe Jeans">
-        </div>
-    </section>
-
-    <section class="inquiry-section">
-        <div class="chat-bubbles">
-            <div class="bubble bubble-1">Coworking spaces available in Novel Office?</div>
-            <div class="bubble bubble-2">Best office space with 24X7 service?</div>
-            <div class="bubble bubble-3">What is the best office space in Bangalore ?</div>
-            <div class="bubble bubble-4">Where is the best coworking space in Bangalore?</div>
-        </div>
-
-        <div class="inquiry-heading">
-            <h2>Want to know<br>where the Best<br>Office Spaces are?</h2>
-        </div>
-    </section>
-
-    <section class="rental-offices">
-  <div class="rental-container">
-    <h2 class="rental-heading">Best Rental office Space in Bangalore</h2>
-    <p class="rental-description">
-      We provide value-for-money services with top-notch amenities, 24/7 IT support and security service along with options from fully furnished to co-working and managed offices on rent in various prime locations in Bangalore.
-    </p>
-    <div class="rental-buttons">
-      <a href="#" class="btn-primary">Explore Locations</a>
-      <a href="#" class="btn-secondary">Explore Gallery</a>
-    </div>
-
-    <div class="office-cards">
-      <div class="office-card">
-        <img src="/assets/images/Frame 7.jpg" alt="Novel Office Queens">
-        <div class="office-label">
-          <h3>NOVEL OFFICE QUEENS</h3>
-          <p>Queens Road, Bangalore</p>
-        </div>
-      </div>
-      <div class="office-card">
-        <img src="/assets/images/Frame 1.jpg" alt="Novel Office Central">
-        <div class="office-label">
-          <h3>NOVEL OFFICE CENTRAL</h3>
-          <p>MG Road, Bangalore</p>
-        </div>
-      </div>
-      <div class="office-card">
-        <img src="/assets/images/Novel Business Park.jpg" alt="Novel MSR Tech Park">
-        <div class="office-label">
-          <h3>NOVEL MSR TECH PARK</h3>
-          <p>Marathahalli, Bangalore</p>
-        </div>
-      </div>
-      <div class="office-card">
-        <img src="/assets/images/Frame 3.jpg" alt="Novel Brigade Tech Park">
-        <div class="office-label">
-          <h3>NOVEL BRIGADE TECH PARK</h3>
-          <p>Whitefield, Bangalore</p>
-        </div>
-      </div>
-      <div class="office-card">
-        <img src="/assets/images/Frame 5.jpg" alt="Novel Office Workhub">
-        <div class="office-label">
-          <h3>NOVEL OFFICE WORKHUB</h3>
-          <p>Whitefield, Bangalore</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
 <?php get_header(); ?>
 
-
-
-   <header class="navbar" id="navbar">
-  <div class="logo">
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Novel Logo White.png" alt="Novel Office Logo" class="logo-img" id="nav-logo">
-  </div>
-
-  <div class="menu-toggle" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <nav class="main-nav">
-    <?php
-      wp_nav_menu([
-        'theme_location' => 'primary',
-        'container' => false,
-        'menu_class' => 'nav-menu',
-      ]);
-    ?>
-  </nav>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <?php
-      wp_nav_menu([
-        'theme_location' => 'primary',
-        'container' => false,
-        'menu_class' => 'mobile-nav-menu',
-      ]);
-    ?>
-  </div>
-</header>
 <div id="section-container">
   <!-- SECTION 1: HERO IMAGE -->
   <div class="section active" id="section-1">
@@ -185,30 +47,29 @@
         <p>We are proud to be the trusted partner of businesses across industries. Join the many clients who rely on us for a productive and inspiring workspace.</p>
       </div>
       <div class="trusted-logos">
-        <!-- Add logo images in assets/images and reference them properly -->
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/JoulesToWatts.jpg"
-                alt="Joules to Watts">
+                alt="Joules to Watts" loading="lazy">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Flatworld.jpg"
-                alt="Flatworld">
+                alt="Flatworld" loading="lazy">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Hitachi.jpg"
-                alt="Hitachi">
+                alt="Hitachi" loading="lazy">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Indiamart.jpg"
-                alt="IndiaMart">
+                alt="IndiaMart" loading="lazy">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Nasscom.jpg"
-                alt="Nasscom">
+                alt="Nasscom" loading="lazy">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Unacademy.jpg"
-                alt="Unacademy">
+                alt="Unacademy" loading="lazy">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Olx.jpg"
-                alt="OLX Autos">
+                alt="OLX Autos" loading="lazy">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/CarDekho.jpg"
-                alt="CarDekho">
+                alt="CarDekho" loading="lazy">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Qatar.jpg"
-                alt="Qatar Airways">
+                alt="Qatar Airways" loading="lazy">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Air-Asia.jpg"
-                alt="AirAsia">
+                alt="AirAsia" loading="lazy">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Pepe-Jeans.jpg"
-                alt="Pepe Jeans">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/stellapps.jpg" alt="Stellapps">
+                alt="Pepe Jeans" loading="lazy">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/stellapps.jpg" alt="Stellapps" loading="lazy">
         
       </div>
     </div>
@@ -276,6 +137,36 @@
       <button class="btn-secondary">Explore Gallery</button>
     </div>
   </div>
+
+  <section class="testimonials" id="testimonials-section">
+  <h2 class="section-title">TESTIMONIALS</h2>
+  <p class="section-subtitle">Subscribe Easy Tutorials YouTube channel to watch more videos.</p>
+
+  <!-- SECTION 4: TESTIMONIALS SECTION -->
+  <div class="testimonials-wrapper">
+    <?php
+      $args = array(
+        'post_type' => 'testimonial',
+        'posts_per_page' => 3,
+      );
+      $testimonial_query = new WP_Query($args);
+
+      if ($testimonial_query->have_posts()) :
+        while ($testimonial_query->have_posts()) : $testimonial_query->the_post();
+          $designation = get_field('designation'); // Fetch from ACF
+    ?>
+      <div class="testimonial-box">
+        <div class="testimonial-img">
+          <?php the_post_thumbnail('thumbnail'); ?>
+        </div>
+        <div class="testimonial-content">
+          <p><span class="quote">❝</span><?php the_content(); ?><span class="quote">❞</span></p>
+          <h3><?php the_title(); ?> <span><?php echo $designation; ?></span></h3>
+        </div>
+      </div>
+    <?php endwhile; wp_reset_postdata(); endif; ?>
+  </div>
+</section>
 
 
 </div>

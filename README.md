@@ -10,7 +10,7 @@
 
 ## Custom Post Types Used
 
-- **Testimonial**
+- **Testimonial**:
 - Registered using `register_post_type('testimonial', [...])` in `functions.php`.
 - Fields like `designation` and `featured image` are handled via ACF.
 - Displayed in `page-testimonials.php`.
